@@ -1,0 +1,30 @@
+<%- include('../partials/header') %>
+
+<table id="list">
+  <thead>
+    <tr>
+      <th>Airline</th>
+      <th>Airport</th>
+      <th>Flight Number</th>
+      <th>Departs</th>
+    </tr>
+  </thead>
+  <% const timeNow = new Date().getTime(); %>
+  <tbody>
+    <% flights.forEach(function(f) { %>
+      <% const d = f.departs; %>
+      <tr> 
+        <td <%= (timeNow > d.getTime()) ? `style=color:red` : '' %>><%= f.airline %></td>
+        <td <%= (timeNow > d.getTime()) ? `style=color:red` : '' %>><%= f.airport %></td>
+        <td <%= (timeNow > d.getTime()) ? `style=color:red` : '' %>><%= f.flightNo %></td>
+        <% const PM = d.getHours() > 12; %>
+        <td <%= (timeNow > d.getTime()) ? `style=color:red` : '' %>>
+            <%= d.getMonth() %>/<%= d.getDay() %>/<%= d.getFullYear() %><br>
+            <%=  PM ? d.getHours()- 12 : d.getHours() %>:<%= d.getMinutes() %>&nbsp;<%= PM ? 'AM' : 'PM' %>
+        </td>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
+  
+<%- include('../partials/footer') %>
