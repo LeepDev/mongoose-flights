@@ -3,7 +3,8 @@ const Ticket = require('../models/ticket');
 
 module.exports = {
   new: newTicket,
-  create
+  create,
+  delete: deleteTicket
 };
 
 async function newTicket(req, res) {
@@ -24,3 +25,10 @@ async function create(req, res) {
         res.render('tickets/new', { title: 'Add Ticket', errorMsg: err.message });
       }
 }
+
+
+async function deleteTicket(req, res) {
+    const ticket = await Ticket.findById(req.params.id);
+    await Ticket.deleteOne({_id: req.params.id});
+    res.redirect(`/flights/${ticket.flight}`);
+  }

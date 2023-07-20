@@ -31,6 +31,14 @@
         <tr>
           <td><%= t.seat %></td>
           <td>$<%= t.price %></td>
+          <td>
+            <form
+              action="/tickets/<%= t._id %>?_method=DELETE"
+              method="POST"
+            >
+            <button type="submit">X</button>
+            </form>
+          </td>
         </tr>
       <% }); %>
     </tbody>
@@ -54,7 +62,7 @@
     <option value="SAN" selected>SAN</option>
   </select>
   <label>Arrival Date:</label>
-  <input type="datetime-local" name="arrival">
+  <input type="datetime-local" name="arrival" required>
   <input type="submit" value="Add Destination">
 </form>
 

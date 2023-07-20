@@ -34,6 +34,6 @@ let flights = await Flight.find({});
 let tickets = await Ticket.find({});
 // console.log(flights);
 // console.log(tickets);
-tickets.forEach(t => {
-    console.log(t.flight);
+flights.forEach(t => {
+    console.log(t.destinations);
 })

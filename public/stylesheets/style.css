@@ -67,8 +67,7 @@ nav > a.active {
 }
 
 #new-form *,
-#add-destination-form *,
-#add-performer-form * {
+#add-destination-form * {
   font-size: 20px;
   padding: 5px;
   border-radius: 5px;
@@ -120,16 +119,14 @@ table td {
   font-weight: bold;
 }
 
-#add-destination-form,
-#add-performer-form {
+#add-destination-form {
   display: grid;
   grid-template-columns: auto auto;
   grid-gap: 1rem;
   margin-bottom: 2rem;
 }
 
-#add-destination-form input[type="submit"],
-#add-performer-form input[type="submit"]  {
+#add-destination-form input[type="submit"]  {
   width: 10rem;
   grid-column: 2 / 3;
 }
