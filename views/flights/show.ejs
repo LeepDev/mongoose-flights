@@ -17,6 +17,31 @@
   </div>
 </section>
 
+<br><br><h2>Tickets</h2>
+<% if (tickets.length) { %>
+  <table>
+    <thead>
+      <tr>
+        <th>Seat</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% tickets.forEach(function(t) { %>
+        <tr>
+          <td><%= t.seat %></td>
+          <td>$<%= t.price %></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+<% } else { %>
+  <h5>No Tickets Yet</h5>
+<% } %>
+<div id="list">
+  <a href="/flights/<%= flight._id %>/tickets/new">Add Ticket</a>
+</div>
+
 <br><br><h2>Destinations</h2>
 <form id="add-destination-form" method="POST"
   action="/flights/<%= flight._id %>/destinations">
