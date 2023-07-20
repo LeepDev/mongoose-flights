@@ -19,8 +19,8 @@
         <td <%= (timeNow > d.getTime()) ? `style=color:red` : '' %>><%= f.flightNo %></td>
         <% const PM = d.getHours() > 12; %>
         <td <%= (timeNow > d.getTime()) ? `style=color:red` : '' %>>
-            <%= d.getMonth() %>/<%= d.getDay() %>/<%= d.getFullYear() %><br>
-            <%=  PM ? d.getHours()- 12 : d.getHours() %>:<%= d.getMinutes() < 10 ? '0'+d.getMinutes() : d.getMinutes() %>&nbsp;<%= PM ? 'PM' : 'AM' %>
+            <%= d.toLocaleDateString('en-us') %>
+            <%= d.toLocaleTimeString('en-us',{ hour: "2-digit", minute: "2-digit" }) %>
         </td>
         <td><a href="/flights/<%= f._id %>">DETAILS</a></td>
       </tr>

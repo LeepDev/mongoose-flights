@@ -12,8 +12,8 @@
   <% let d = flight.departs; %>
   <% let PM = d.getHours() > 12; %>
   <div>
-    <%= d.getMonth() %>/<%= d.getDay() %>/<%= d.getFullYear() %><br>
-    <%=  PM ? d.getHours()- 12 : d.getHours() %>:<%= d.getMinutes() < 10 ? '0'+d.getMinutes() : d.getMinutes() %>&nbsp;<%= PM ? 'PM' : 'AM' %>
+    <%= d.toLocaleDateString('en-us') %>
+    <%= d.toLocaleTimeString('en-us',{ hour: "2-digit", minute: "2-digit" }) %>
   </div>
 </section>
 
@@ -54,12 +54,10 @@
 <form id="add-destination-form" method="POST"
   action="/flights/<%= flight._id %>/destinations">
   <label>Destination Airport:</label>
-  <select name="airport">
-    <option value="AUS">AUS</option>
-    <option value="DFW">DFW</option>
-    <option value="DEV">DEV</option>
-    <option value="LAX">LAX</option>
-    <option value="SAN" selected>SAN</option>
+  <select name="airport" required>
+    <% selectList.forEach(item => {  %>
+      <option value="<%= item %>"><%= item %></option>
+    <% }); %>
   </select>
   <label>Arrival Date:</label>
   <input type="datetime-local" name="arrival" required>
@@ -80,7 +78,10 @@
           <% d = fd.arrival; %>
           <% PM = d.getHours() > 12; %>
           <td><%= fd.airport %></td>
-          <td><%= d.getMonth() %>/<%= d.getDay() %>/<%= d.getFullYear() %>&nbsp;<%=  PM ? d.getHours()- 12 : d.getHours() %>:<%= d.getMinutes() < 10 ? '0'+d.getMinutes() : d.getMinutes() %>&nbsp;<%= PM ? 'PM' : 'AM' %></td>
+          <td>
+            <%= d.toLocaleDateString('en-us') %>
+            <%= d.toLocaleTimeString('en-us',{ hour: "2-digit", minute: "2-digit" }) %>
+          </td>
         </tr>
       <% }); %>
     </tbody>
