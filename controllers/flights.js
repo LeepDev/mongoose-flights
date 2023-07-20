@@ -26,7 +26,7 @@ async function show(req, res) {
 }
 
 async function index(req, res) {
-    const flights = await Flight.find({}).sort({departs: -1});
+    const flights = await Flight.find({}).sort({departs: 1});
     res.render('flights/index', {
         title: 'All Flights',
         flights
